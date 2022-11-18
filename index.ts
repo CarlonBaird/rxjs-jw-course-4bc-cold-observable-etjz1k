@@ -1,5 +1,7 @@
 import { ajax } from 'rxjs/ajax';
 
-ajax('https://random-data-api.com/api/name/random_name').subscribe((data) =>
-  console.log(data)
-);
+const ajax$ = ajax<any>('https://random-data-api.com/api/name/random_name');
+
+ajax$.subscribe((data) => console.log('Sub 1: ', data.response.name));
+ajax$.subscribe((data) => console.log('Sub 2: ', data.response.name));
+ajax$.subscribe((data) => console.log('Sub 3: ', data.response.name));
